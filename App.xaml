@@ -1,0 +1,14 @@
+﻿<Application x:Class="Shelest.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Shelest"
+             StartupUri="View/Windows/wMain.xaml">
+    <Application.Resources>
+        <Style TargetType="ListViewItem">
+            <Setter Property="Margin" Value="0,0,0,15"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Background" Value="{Binding backColor}"/>
+        </Style>
+    </Application.Resources>
+</Application>

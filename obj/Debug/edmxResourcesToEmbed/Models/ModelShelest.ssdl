@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище ShelestDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="agents">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="45" Nullable="false" />
+    <Property Name="OrgType_Type" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="INN" Type="bigint" Nullable="false" />
+    <Property Name="KPP" Type="bigint" Nullable="false" />
+    <Property Name="DirName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="45" Nullable="false" />
+    <Property Name="Logo" Type="nvarchar" MaxLength="100" />
+    <Property Name="Priority" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="deliveryhistory">
+    <Key>
+      <PropertyRef Name="Provider_id" />
+      <PropertyRef Name="Materials_id" />
+    </Key>
+    <Property Name="Provider_id" Type="bigint" Nullable="false" />
+    <Property Name="Materials_id" Type="bigint" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="Amount" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="employees">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="45" Nullable="false" />
+    <Property Name="SecondName" Type="nvarchar" MaxLength="45" Nullable="false" />
+    <Property Name="MiddleName" Type="nvarchar" MaxLength="45" Nullable="false" />
+    <Property Name="Birthday" Type="date" Nullable="false" />
+    <Property Name="PassNumber" Type="int" Nullable="false" />
+    <Property Name="BankNumber" Type="int" Nullable="false" />
+    <Property Name="FamilySize" Type="int" Nullable="false" />
+    <Property Name="Specialization" Type="nvarchar" MaxLength="45" Nullable="false" />
+    <Property Name="NFC" Type="nvarchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <EntityType Name="lognfc">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Employee" Type="nvarchar" MaxLength="45" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="Tme" Type="time" Precision="7" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="materials">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="45" Nullable="false" />
+    <Property Name="MaterialType_Type" Type="nvarchar" MaxLength="45" Nullable="false" />
+    <Property Name="PackageAmount" Type="float" Nullable="false" />
+    <Property Name="Measure" Type="nvarchar" MaxLength="45" Nullable="false" />
+    <Property Name="InStock" Type="float" Nullable="false" />
+    <Property Name="MinimalAmount" Type="float" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Image" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Cost" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="materialtype">
+    <Key>
+      <PropertyRef Name="Type" />
+    </Key>
+    <Property Name="Type" Type="nvarchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <EntityType Name="orgtype">
+    <Key>
+      <PropertyRef Name="Type" />
+    </Key>
+    <Property Name="Type" Type="nvarchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="products">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VendorCode" Type="nvarchar" MaxLength="45" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="45" Nullable="false" />
+    <Property Name="ProductType_Type" Type="nvarchar" MaxLength="45" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="256" />
+    <Property Name="Image" Type="nvarchar" MaxLength="100" />
+    <Property Name="MinimalCost" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+    <Property Name="Width" Type="float" />
+    <Property Name="Height" Type="float" />
+    <Property Name="Length" Type="float" />
+    <Property Name="Weight" Type="float" />
+    <Property Name="WeightWrapped" Type="float" />
+    <Property Name="Certificate" Type="nvarchar" MaxLength="100" />
+    <Property Name="Standard" Type="nvarchar" MaxLength="45" />
+    <Property Name="ProductionDuration" Type="time" Precision="7" />
+    <Property Name="BaseCost" Type="decimal" Precision="5" Scale="2" />
+  </EntityType>
+  <EntityType Name="productsale">
+    <Key>
+      <PropertyRef Name="Agent" />
+      <PropertyRef Name="Product" />
+    </Key>
+    <Property Name="Agent" Type="nvarchar" MaxLength="45" Nullable="false" />
+    <Property Name="Product" Type="nvarchar" MaxLength="45" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="productscanbeproduced">
+    <Key>
+      <PropertyRef Name="Product" />
+      <PropertyRef Name="Workshop" />
+    </Key>
+    <Property Name="Product" Type="nvarchar" MaxLength="45" Nullable="false" />
+    <Property Name="Workshop" Type="nvarchar" MaxLength="45" Nullable="false" />
+    <Property Name="MinimalWorkersAmount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="productsneedmaterials">
+    <Key>
+      <PropertyRef Name="Product" />
+      <PropertyRef Name="Material" />
+    </Key>
+    <Property Name="Product" Type="nvarchar" MaxLength="45" Nullable="false" />
+    <Property Name="Material" Type="nvarchar" MaxLength="45" Nullable="false" />
+    <Property Name="Amount" Type="nvarchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <EntityType Name="producttype">
+    <Key>
+      <PropertyRef Name="Type" />
+    </Key>
+    <Property Name="Type" Type="nvarchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <EntityType Name="provider">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="45" Nullable="false" />
+    <Property Name="INN" Type="int" Nullable="false" />
+    <Property Name="OrgType_Type" Type="nvarchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="workshops">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="45" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="256" />
+  </EntityType>
+  <Association Name="agents$fk_Agents_OrgType">
+    <End Role="orgtype" Type="Self.orgtype" Multiplicity="1" />
+    <End Role="agents" Type="Self.agents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orgtype">
+        <PropertyRef Name="Type" />
+      </Principal>
+      <Dependent Role="agents">
+        <PropertyRef Name="OrgType_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="deliveryhistory$fk_Provider_has_Materials_Materials1">
+    <End Role="materials" Type="Self.materials" Multiplicity="1" />
+    <End Role="deliveryhistory" Type="Self.deliveryhistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="materials">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="deliveryhistory">
+        <PropertyRef Name="Materials_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="deliveryhistory$fk_Provider_has_Materials_Provider1">
+    <End Role="provider" Type="Self.provider" Multiplicity="1" />
+    <End Role="deliveryhistory" Type="Self.deliveryhistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="provider">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="deliveryhistory">
+        <PropertyRef Name="Provider_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6035: В связи "lognfc$fk_LogNFC_Employees1" имеются столбцы, которые не являются частью ключа таблицы на первичной стороне связи. Связь исключена.
+        <Association Name="lognfc$fk_LogNFC_Employees1" />-->
+  <Association Name="materials$fk_Materials_MaterialType1">
+    <End Role="materialtype" Type="Self.materialtype" Multiplicity="1" />
+    <End Role="materials" Type="Self.materials" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="materialtype">
+        <PropertyRef Name="Type" />
+      </Principal>
+      <Dependent Role="materials">
+        <PropertyRef Name="MaterialType_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="products$fk_Products_ProductType1">
+    <End Role="producttype" Type="Self.producttype" Multiplicity="1" />
+    <End Role="products" Type="Self.products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="producttype">
+        <PropertyRef Name="Type" />
+      </Principal>
+      <Dependent Role="products">
+        <PropertyRef Name="ProductType_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6035: В связи "productsale$fk_Agents_has_Products_Agents1" имеются столбцы, которые не являются частью ключа таблицы на первичной стороне связи. Связь исключена.
+        <Association Name="productsale$fk_Agents_has_Products_Agents1" />-->
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6035: В связи "productsale$fk_Agents_has_Products_Products1" имеются столбцы, которые не являются частью ключа таблицы на первичной стороне связи. Связь исключена.
+        <Association Name="productsale$fk_Agents_has_Products_Products1" />-->
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6035: В связи "productscanbeproduced$fk_Products_has_Workshops_Products1" имеются столбцы, которые не являются частью ключа таблицы на первичной стороне связи. Связь исключена.
+        <Association Name="productscanbeproduced$fk_Products_has_Workshops_Products1" />-->
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6035: В связи "productscanbeproduced$fk_Products_has_Workshops_Workshops1" имеются столбцы, которые не являются частью ключа таблицы на первичной стороне связи. Связь исключена.
+        <Association Name="productscanbeproduced$fk_Products_has_Workshops_Workshops1" />-->
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6035: В связи "productsneedmaterials$fk_Products_has_Materials_Materials1" имеются столбцы, которые не являются частью ключа таблицы на первичной стороне связи. Связь исключена.
+        <Association Name="productsneedmaterials$fk_Products_has_Materials_Materials1" />-->
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6035: В связи "productsneedmaterials$fk_Products_has_Materials_Products1" имеются столбцы, которые не являются частью ключа таблицы на первичной стороне связи. Связь исключена.
+        <Association Name="productsneedmaterials$fk_Products_has_Materials_Products1" />-->
+  <Association Name="provider$fk_Provider_OrgType1">
+    <End Role="orgtype" Type="Self.orgtype" Multiplicity="1" />
+    <End Role="provider" Type="Self.provider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orgtype">
+        <PropertyRef Name="Type" />
+      </Principal>
+      <Dependent Role="provider">
+        <PropertyRef Name="OrgType_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище ShelestDBModelContainer">
+    <EntitySet Name="agents" EntityType="Self.agents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="deliveryhistory" EntityType="Self.deliveryhistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="employees" EntityType="Self.employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="lognfc" EntityType="Self.lognfc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="materials" EntityType="Self.materials" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="materialtype" EntityType="Self.materialtype" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="orgtype" EntityType="Self.orgtype" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="productsale" EntityType="Self.productsale" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="productscanbeproduced" EntityType="Self.productscanbeproduced" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="productsneedmaterials" EntityType="Self.productsneedmaterials" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="producttype" EntityType="Self.producttype" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="provider" EntityType="Self.provider" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="workshops" EntityType="Self.workshops" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="agents$fk_Agents_OrgType" Association="Self.agents$fk_Agents_OrgType">
+      <End Role="orgtype" EntitySet="orgtype" />
+      <End Role="agents" EntitySet="agents" />
+    </AssociationSet>
+    <AssociationSet Name="deliveryhistory$fk_Provider_has_Materials_Materials1" Association="Self.deliveryhistory$fk_Provider_has_Materials_Materials1">
+      <End Role="materials" EntitySet="materials" />
+      <End Role="deliveryhistory" EntitySet="deliveryhistory" />
+    </AssociationSet>
+    <AssociationSet Name="deliveryhistory$fk_Provider_has_Materials_Provider1" Association="Self.deliveryhistory$fk_Provider_has_Materials_Provider1">
+      <End Role="provider" EntitySet="provider" />
+      <End Role="deliveryhistory" EntitySet="deliveryhistory" />
+    </AssociationSet>
+    <AssociationSet Name="materials$fk_Materials_MaterialType1" Association="Self.materials$fk_Materials_MaterialType1">
+      <End Role="materialtype" EntitySet="materialtype" />
+      <End Role="materials" EntitySet="materials" />
+    </AssociationSet>
+    <AssociationSet Name="products$fk_Products_ProductType1" Association="Self.products$fk_Products_ProductType1">
+      <End Role="producttype" EntitySet="producttype" />
+      <End Role="products" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="provider$fk_Provider_OrgType1" Association="Self.provider$fk_Provider_OrgType1">
+      <End Role="orgtype" EntitySet="orgtype" />
+      <End Role="provider" EntitySet="provider" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

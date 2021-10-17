@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3c60b5e07f644d4dae24fb849a06ebc0" Name="Diagram1">
+        <EntityTypeShape EntityType="ShelestDBModel.agent" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShelestDBModel.deliveryhistory" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShelestDBModel.employee" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShelestDBModel.lognfc" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShelestDBModel.material" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShelestDBModel.materialtype" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShelestDBModel.orgtype" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShelestDBModel.product" Width="1.5" PointX="10" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShelestDBModel.productsale" Width="1.5" PointX="9.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShelestDBModel.productscanbeproduced" Width="1.5" PointX="5.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShelestDBModel.productsneedmaterial" Width="1.5" PointX="11.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShelestDBModel.producttype" Width="1.5" PointX="7.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShelestDBModel.provider" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShelestDBModel.workshop" Width="1.5" PointX="11.75" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="ShelestDBModel.agents_fk_Agents_OrgType" ManuallyRouted="false" />
+        <AssociationConnector Association="ShelestDBModel.deliveryhistory_fk_Provider_has_Materials_Materials1" ManuallyRouted="false" />
+        <AssociationConnector Association="ShelestDBModel.deliveryhistory_fk_Provider_has_Materials_Provider1" ManuallyRouted="false" />
+        <AssociationConnector Association="ShelestDBModel.materials_fk_Materials_MaterialType1" ManuallyRouted="false" />
+        <AssociationConnector Association="ShelestDBModel.provider_fk_Provider_OrgType1" ManuallyRouted="false" />
+        <AssociationConnector Association="ShelestDBModel.products_fk_Products_ProductType1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

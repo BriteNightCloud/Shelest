@@ -1,0 +1,90 @@
+﻿<Page x:Class="Shelest.View.Pages.pMain"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Shelest.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="600"
+      Title="Агенты" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        
+        <Grid>
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="5.5*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox x:Name="tbSearch" Height="35" Margin="15" Grid.Column="0" VerticalContentAlignment="Center" Padding="7" GotKeyboardFocus="tbSearch_GotKeyboardFocus" LostKeyboardFocus="tbSearch_LostKeyboardFocus" TextChanged="tbSearch_TextChanged" />
+
+            <ComboBox x:Name="cbSort" SelectedIndex="0" Height="35" Margin="0,15,15,15" Grid.Column="1" Padding="9" SelectionChanged="cbSort_SelectionChanged">
+                <ComboBoxItem Visibility="Collapsed" Content="Сортировка"/>
+                <ComboBoxItem Content=""/>
+                <ComboBoxItem Content="А-я"/>
+                <ComboBoxItem Content="Я-а"/>
+                <ComboBoxItem Content="Высший приоритет"/>
+                <ComboBoxItem Content="Низший приоритет"/>
+                <ComboBoxItem Content="Высшая скидка"/>
+                <ComboBoxItem Content="Низшая скидка"/>
+            </ComboBox>
+
+            <ComboBox x:Name="cbFilter" SelectedIndex="0" Height="35" Margin="0,15,15,15" Grid.Column="2" Padding="9" SelectionChanged="cbFilter_SelectionChanged" BorderThickness="1">
+                <ComboBoxItem Visibility="Collapsed" Content="Все типы"/>
+                <ComboBoxItem Content=""/>
+            </ComboBox>
+        </Grid>
+        
+        <Grid Margin="25,0,40,0" x:Name="width" Height="0" IsEnabled="False"/>
+        
+        <ListView x:Name="lvAgents" Grid.Row="1" Grid.ColumnSpan="3" BorderThickness="0" Margin="15,0" ScrollViewer.VerticalScrollBarVisibility="auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="White">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Width="{Binding ElementName=width,Path=ActualWidth}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="75"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Source="{Binding logoPath}" Height="100" Grid.Column="0"/>
+
+                        <StackPanel Orientation="Vertical" Grid.Column="1" VerticalAlignment="Center" Margin="10,-5,0,0">
+                            <TextBlock FontSize="18">
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0} | {1}">
+                                        <Binding Path="OrgType_Type"/>
+                                        <Binding Path="Name"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+
+                            <TextBlock Text="{Binding saleCount,StringFormat='{}{0} продаж за год'}"/>
+
+                            <TextBlock Text="{Binding Phone}"/>
+
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}Приоритетность: {0}">
+                                        <Binding Path="Priority"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </StackPanel>
+
+                        <TextBlock x:Name="discount" HorizontalAlignment="Right" Text="{Binding discount,StringFormat='{}{0}%'}" Grid.Column="2" FontSize="26" Margin="0,10,0,0"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <TextBlock x:Name="lvCount" Grid.Row="2" Margin="3"/>
+        <StackPanel x:Name="spPages" Grid.Row="2" Margin="5,0" HorizontalAlignment="Right" Orientation="Horizontal"/>
+    </Grid>
+</Page>
