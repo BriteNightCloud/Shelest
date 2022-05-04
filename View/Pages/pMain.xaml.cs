@@ -210,6 +210,9 @@ namespace Shelest.View.Pages
             int countBeforeX2 = data.Count;
             pages = (int)Math.Ceiling(data.Count / 10.0);
 
+            if (data.Count() <= 10)
+                page = 0;
+
             int temp1 = page * 10 <= data.Count() ? page * 10 : 0;
             int temp2 = data.Count() - temp1 >= 10 ? 10 : data.Count() - temp1;
 
